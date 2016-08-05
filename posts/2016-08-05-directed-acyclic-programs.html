@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Hakan Ozkok Blog - Programs Should Be Directed Acyclic Graphs</title>
+        <link rel="stylesheet" type="text/css" href="../css/default.css" />
+    </head>
+    <body>
+        <div id="header">
+            <div id="logo">
+                <a href="../">Hakan Ozkok Blog</a>
+            </div>
+            <div id="navigation">
+                <a href="../">Home</a>
+                <a href="../about.html">About</a>
+                <a href="../contact.html">Contact</a>
+                <a href="../archive.html">Archive</a>
+            </div>
+        </div>
+
+        <div id="content">
+            <h1>Programs Should Be Directed Acyclic Graphs</h1>
+
+            <div class="info">
+    Posted on August  5, 2016
+    
+        by Hakan Ozkok
+    
+</div>
+
+<p>One of the biggest problems in software world is that most of the people don’t really care about what would happen when their program gets bigger.</p>
+<div class="figure">
+<img src="../images/directed-acyclic-graph.png" />
+
+</div>
+<p>It is very dangerous to write code that has potential to change something vital in the program. (aka <strong>Side Effects!</strong>)</p>
+<p>Let’s think about the code as a graph and make some assumptions so that;</p>
+<ul>
+<li>An expression is a node in the graph.</li>
+<li>Edges (connections between nodes) are the calls to other expressions inside expressions (parameters of functions).</li>
+<li><code>e1(e2, e3)</code> means <code>e1</code> is connected to <code>e2</code> and <code>e3</code>.</li>
+</ul>
+<p>To be continued…</p>
+
+        </div>
+        <div id="footer">
+            Powered by
+            <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+        </div>
+    </body>
+</html>
