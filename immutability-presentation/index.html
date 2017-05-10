@@ -1,0 +1,332 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>reveal.js</title>
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/black.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+                <section>
+                    <section>
+                        Immutable Data Structures
+                        <p style="font-size: 0.6em;">Hakan Ozkok</p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        What is immutability?
+                    </section>
+                    <section>
+                        Why do we mutate everything?
+                    </section>
+                    <section>
+                        <pre><code data-trim>
+                        const x = 23;
+                        const y = x + 5;
+                        const z = (x * 2) / y;
+                        // ...
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code data-trim>
+                        const obj = {
+                          a: 2,
+                          b: 'string'
+                        };
+                        obj.a = 5; // object is mutated!
+                        </code></pre>
+                    </section>
+                    <section>
+                        What about...<br />
+                        thinking about objects as <strong
+                            style="color: green; font-size: 1.2em;">
+                            values
+                        </strong>?
+                        <aside class="notes">
+                            Traditional OO tends to make us think of composites
+                            as something other than values.
+                        </aside>
+                    </section>
+                </section>
+
+                <section>
+                    <section data-markdown>
+                        * identity
+                        * state
+                        * value
+                        Note:
+                        State is the value over time.
+                    </section>
+                    <section>
+                        Identity?
+                        <br />
+                        An entity that we use to associate actions which are
+                        related to the values over time.
+                    </section>
+                    <section data-markdown style="text-align: left;">
+                        > "State is a value of an identity at a time."
+                        <br />
+                        > \- Rich Hickey
+                    </section>
+                    <section>
+                        <img alt="value-state" src="value-state.png" />
+                    </section>
+                    <section data-markdown>
+                        - today
+                        - numberOfStudents
+                        - myLocation
+                        Note:
+                        Logical entities.
+                        In a particular point in time, everything is frozen.
+                        When I say time, don't just think about the time, think
+                        about the most atomic point in the flow of states.
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        Concurrency
+                        <p class="fragment fade-up">
+                            is <strong style="color: red; font-size: 1.2em;">not</strong>
+                            parallelism!
+                        </p>
+                    </section>
+                    <section>
+                        <img alt="con-and-par" src="con_and_par.jpg" />
+                    </section>
+                    <section data-markdown>
+                        Variables do not work in concurrent systems.
+                        Note:
+                        omnipotence, single thread, one at a time, locks, mutexes, semaphores
+                    </section>
+                    <section data-markdown>
+                        Problems of using variables;
+                        * operations on variables could be non-atomic.
+                        * We cannot stop the world.
+                        * composite operations require locks
+                        * and locks are hard to maintain and scale
+                    </section>
+                    <section>
+                        With immutable data, there is no need for locks.
+                        <p class="fragment fade-up">
+                            Independent tasks can run without bothering others
+                            because there is no way to change their state from outside.
+                        </p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        How do we manipulate immutable data?
+                    </section>
+                    <section>
+                        Let's see the following examples...
+                    </section>
+                    <section data-markdown data-trim>
+                      ```
+                      // mutable way
+                      // the date object will have another value, dangerous
+                      date.setDay('3');
+                      <br />
+                      // immutable way
+                      newDay = date.setDay('3'); // original date does not change
+                      ```
+                    </section>
+                    <section data-markdown>
+                        We have an immutable linked list;
+                        ```
+                        a -> b -> c -> d
+                        ```
+                        We want to replace `c` with `e`,
+                        <br />
+                        so we have to create a new
+                        linked list for the sake of immutability.
+                        ```
+                        a' -> b' -> e -> d'
+                        ```
+                    </section>
+                    <section>
+                        Okay okay... I hear your voices...
+                        <p class="fragment fade-up">
+                            Performance?
+                        </p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        Persistent Data Structures
+                    </section>
+                    <section data-markdown>
+                        Let's say we have two linked lists;
+                        ```
+                        xs = (0 -> 1 -> 2)
+                        ys = (3 -> 4 -> 5)
+                        zs = xs.concatenate(ys)
+                        ```
+                    </section>
+                    <section>
+                        <img alt="linked-list" src="immutable-list.png" \>
+                    </section>
+                    <section>
+                        Reusing existing values!
+                    </section>
+                    <section>
+                        <img alt="immutable-tree" src="immutable-tree.png" \>
+                    </section>
+                    <section>
+                        Still... not good enough for huge vectors or deep trees
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        Hash Array Map Tries (HAMT)
+                    </section>
+                    <section>
+                        <img alt="bit-map-hash-trie" src="bit-partitioned-hash-trie.png" \>
+                    </section>
+                    <section data-markdown>
+                        - **Time Complexity:** `O(1)`
+                        - **Space Complexity:** `O(lgn)`
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        Benefits of using Immutable Data in Web Applications
+                    </section>
+                    <section data-markdown>
+                        Modern Web Application UI State Handling
+                        * Safer code
+                        * Comparing UI elements' state difference is as easy as comparing
+                          their references (e.g. `React.PureComponent`, Om library, Elm lang)
+                        * Asynchronicity and Changing State Handling is easier to manage
+                    </section>
+                    <section>
+                        <img
+                            alt="should-component-update"
+                            src="should-component-update.png"
+                            style="background-color: white;"/>
+                    </section>
+                    <section data-markdown>
+                        * Easier debugging
+                        * Back-tracking made easy with persistent data
+                        * Undo / Redo
+                        * e.g. Redux hot reloading, action replay, time travel
+                    </section>
+                    <section>
+                        <img
+                            alt="redux-time-travel"
+                            src="redux-time-travel.gif" />
+                    </section>
+                </section>
+
+                <section>
+                  <section>
+                    Additional Benefits
+                  </section>
+                  <section>
+                    Immutable data can be used as a set's item, or map's key
+                    by its reference.
+                    <pre><code data-trim>
+                      const obj1 = {/* props1 */};
+                      const obj2 = {/* props2 */};
+                      // at a later stage...
+                      const objComments = {
+                        obj1: 'This object is a placeholder',
+                        obj2: 'You need root previliges to access this obj'
+                      };
+                    </code></pre>
+                  </section>
+                  <section data-markdown>
+                    Caching
+                    - In a language, compiler-level optimizations could be done
+                    - In a language, runtime object reference caching could be done
+                    - e.g. python strings
+                    - We already use this kind of caching in browsers!
+                    - Shallow Comparison == Deep Comparison !
+                    - No need for expensive deep copying.
+                    - Fast *diff*s
+                    - Easier to reason about the code (explicity)
+                    - FREEDOM! We ensure nothing will break.
+                  </section>
+                </section>
+
+                <section>
+                    Any cons?
+                    <p class="fragment fade-up">
+                        Still... Performance :) We can't just use these structures for all purposes.
+                    </p>
+                </section>
+
+                <section data-markdown>
+                    Softwares using immutable data;
+                    - Git
+                    - Docker
+                    - Clojure
+                    - CouchDB
+                    - Kafka
+                </section>
+
+                <section data-markdown>
+                    Key people who influenced me on this subject;
+                    - John McCarthy
+                    - Rich Hickey
+                    - Joe Armstrong
+                    - Alan Kay
+                </section>
+
+                <section>
+                    Thanks :)
+                </section>
+
+                <section data-markdown>
+                    References:
+                    - [Rich Hickey: Persistent Data Structures and Managed References](https://www.infoq.com/presentations/Value-Identity-State-Rich-Hickey)
+                    - [Facebook: Optimizing Performance](https://facebook.github.io/react/docs/optimizing-performance.html)
+                    - [Wikipedia: Persistent Data Structure](https://en.wikipedia.org/wiki/Persistent_data_structure)
+                    - [Optimizing Dynamically-Typed Object-Oriented Languages With Polymorphic Inline Caches [paper]](http://www.selflanguage.org/_static/published/pics.pdf)
+                </section>
+
+      </div>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+        dependencies: [
+          { src: 'plugin/markdown/marked.js' },
+          { src: 'plugin/markdown/markdown.js' },
+          { src: 'plugin/notes/notes.js', async: true },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+      });
+    </script>
+  </body>
+</html>
