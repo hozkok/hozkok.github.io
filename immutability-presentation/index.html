@@ -35,9 +35,18 @@
                 <section>
                     <section>
                         What is immutability?
+                        <aside class="notes">
+                            Unable to change, unchangable, non-modifiable state.
+                        </aside>
                     </section>
                     <section>
                         Why do we mutate everything?
+                        <aside class="notes">
+                            Mutation is how imperative languages work by default.
+                            Defaults are important, because when we learn a
+                            language, we use its built-in features to solve our
+                            problems.
+                        </aside>
                     </section>
                     <section>
                         <pre><code data-trim>
@@ -63,8 +72,11 @@
                             values
                         </strong>?
                         <aside class="notes">
-                            Traditional OO tends to make us think of composites
-                            as something other than values.
+                            Traditional OO languages tend to make us think of
+                            composites as something other than values. We are
+                            stuck to think on a specific paradigm to solve all
+                            the problems, which might as well cause problem in
+                            the future.
                         </aside>
                     </section>
                 </section>
@@ -75,7 +87,9 @@
                         * state
                         * value
                         Note:
-                        State is the value over time.
+                        State is the value over time. Understanding
+                        identity-state-value relationship is the key point to
+                        understand these structures.
                     </section>
                     <section>
                         Identity?
@@ -96,10 +110,12 @@
                         - numberOfStudents
                         - myLocation
                         Note:
-                        Logical entities.
-                        In a particular point in time, everything is frozen.
-                        When I say time, don't just think about the time, think
-                        about the most atomic point in the flow of states.
+                        Logical entities.  In a particular point in time,
+                        everything is frozen.  Values do not change. Only the
+                        state of the entities would change.  Considering the
+                        time as an atomic point in the flow of the states would
+                        help on thinking about values. In a single point, the
+                        state will not change.
                     </section>
                 </section>
 
@@ -110,6 +126,17 @@
                             is <strong style="color: red; font-size: 1.2em;">not</strong>
                             parallelism!
                         </p>
+                        <aside class="notes">
+                            The problems in these two domains are separate.
+                            Concurrency is about running two or more tasks in
+                            overlapping time periods. Again, the point in time
+                            refers to the most atomic task in the domain. In
+                            CPU level, it could be an instruction. Database
+                            transactions in some DBMSs could also be considered
+                            as point in time in that case even if the operation
+                            is not completed in an atomic time in another
+                            domain.
+                        </aside>
                     </section>
                     <section>
                         <img alt="con-and-par" src="con_and_par.jpg" />
@@ -117,7 +144,8 @@
                     <section data-markdown>
                         Variables do not work in concurrent systems.
                         Note:
-                        omnipotence, single thread, one at a time, locks, mutexes, semaphores
+                        Programs are not omnipotent, single/multi thread, one
+                        at a time, locks, mutexes, semaphores.
                     </section>
                     <section data-markdown>
                         Problems of using variables;
@@ -144,11 +172,12 @@
                     </section>
                     <section data-markdown data-trim>
                       ```
-                      // mutable way
+                      // let's say `setDay` is impletemented in a mutable way
                       // the date object will have another value, dangerous
                       date.setDay('3');
                       <br />
-                      // immutable way
+                      // let's say it is implemented in immutable way it
+                      // creates an entire new object.
                       newDay = date.setDay('3'); // original date does not change
                       ```
                     </section>
@@ -325,7 +354,8 @@
           { src: 'plugin/markdown/markdown.js' },
           { src: 'plugin/notes/notes.js', async: true },
           { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-        ]
+        ],
+        pdfMaxPagesPerSlide: 1
       });
     </script>
   </body>
