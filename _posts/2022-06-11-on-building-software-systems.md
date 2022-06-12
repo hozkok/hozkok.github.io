@@ -21,7 +21,7 @@ The biggest effort we should probably start with is the simplicity of the softwa
 
 ### Software Architecture
 
-It can be vitally important on how we structure and evolve the architecture of the software we build. How do we define modules, object ownerships, dependencies, tests. How open our structure to extension?
+It can be vitally important on how we structure and evolve the architecture of the software we build. How do we define modules, entity ownerships and relationships, dependencies, tests. How open our structure to extension?
 
 Coming up with decisions involve the thought process on how we approach to the programming. Languages shape our thought procecss. The entire paradigm space we have. The good practices differ in languages and frameworks. It is **very** important that how do we structure and evolve the architecture of the code base.
 
