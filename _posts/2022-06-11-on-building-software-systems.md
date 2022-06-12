@@ -4,9 +4,13 @@ title:  "On Building Software Systems [Draft]"
 date:   2022-06-11
 ---
 
-One of the biggest problems in building software systems is that people not necessarily think in much detail about the evolution of the systems they build as they are supposed to. This might have several reasons such as, tight deadlines, poor architecture, lack of experience to have confidence enough to say "no", lack of theoretical knowledge and/or simply not having a "good taste".
+In this post, I discuss the problems and considerations to take in designing and building systems.
 
-Software systems will evolve. In a good or bad direction. And it is in our hands to decide their fate.
+## The problems of software systems
+
+One of the biggest problems in building software systems is that people not necessarily think as much in detail about the evolution of the systems they build as they are supposed to. This might have several reasons such as, tight deadlines, poor architecture, lack of experience to have confidence enough to say "no", lack of theoretical knowledge and/or simply not having a "good taste".
+
+Having poor decisions and practices eventually cause the entire systems to fail. Software systems will evolve. In a good or bad direction. And it is in our hands to decide their fate.
 
 
 ## The Architecture
