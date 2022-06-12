@@ -4,7 +4,7 @@ title:  "On Building Software Systems [Draft]"
 date:   2022-06-11
 ---
 
-In this post, I discuss the problems and considerations to take in designing and building systems.
+In this post, I discuss the problems and considerations to take in designing and building software systems.
 
 ## The problems of software systems
 
