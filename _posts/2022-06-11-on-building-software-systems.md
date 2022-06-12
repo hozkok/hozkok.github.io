@@ -36,6 +36,17 @@ Some popular backend frameworks (such as django, rails, phoenix, laravel) have v
 
 In the modern world software systems, most of the applications have complex data-driven logic. And when it comes to data, having cyclic relationships is extremely harmful and hard to manage. DAGs are very popular data structures for data pipelines and immutable structures in many languages leverage their power. If two data models depend on each other, there is probably an association that needs to be defined separately. If you have a cyclic relationship, you probably have a bad smell ([taste](#having-a-good-taste)) in the architecture.
 
+#### Ease of tests
+
+Ideally, it should be very easy, safe and intuitive to test the system. Tests should be completely isolated and mistakes should be avoided. If someone working on a system is able to test it because of being experienced about that system doesn't mean that another person joining the team will be able to test in the same way and safety. Automation and setting up the right environment are important.
+
+#### Separation of build and deployment
+
+Coupling the build and deployment makes it hard to manage the software system life cycle. Ideally, developers of the system should be quickly able to change deployment specific settings of a system. But building a system may involve so many steps especially if it is a heavy-weight system with many dependencies. This may cause a huge overhead for the entire lifecycle.
+
+Development experience should be considered as a first-class problem in the organization to build the systems.
+
+
 ### System Architecture
 
 When we build a system [of systems], how we define dependencies play a very important role on the complexity and reliability of the system. **Minimizing the moving parts** is one of the most important things and we should be conservative when it comes to introducing a new system level dependency for the new requirements. A new system level dependency potantially means more metrics to watch, less fault tolerancy, less control over the system and added complexity, not even mentioning the security and versioning support.
