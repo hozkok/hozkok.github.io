@@ -47,7 +47,7 @@ As stated by the famous Gall's Law;
 
 This is probably less important than the architecture, but still is an important decision to make. Historically, the fight on programming languages is as old as the programming itself. OOP, FP, imperative, declarative, structural programming... Fight goes on.
 
-From the engineering perspective, There is a trade-off between "safety" and "productivity". Languages evolve in a way to find the middle ground in this trade off. Modern languages like Rust, C#, (new JVM languages like Scala, Kotlin) try to find the sweet spot. Some languages come from academia, some from [hacker culture](https://en.wikipedia.org/wiki/Hacker_culture). And historically, most of the useful languages that are still widely adopted and still alive come from the latter.
+From the engineering perspective, There is a trade-off between "safety" and "productivity". Languages evolve in a way to find the middle ground in this trade off. Modern languages like Rust, C#, (new JVM languages like Scala, Kotlin) try to find the sweet spot, while in the far end of the safety spectrum Haskell carries the flag. Some languages come from academia, some from [hacker culture](https://en.wikipedia.org/wiki/Hacker_culture). And historically, most of the useful languages that are still widely adopted and still alive come from the latter.
 
 So how do we consider what language to pick when building systems? It is mostly about the purpose of the system, and what we bet on. I tend to bet on the culture and the community behind the language. (of course, there are also economical aspects, but I am not going into there)
 
