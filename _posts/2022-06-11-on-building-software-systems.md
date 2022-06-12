@@ -57,7 +57,7 @@ So how do we consider what language to pick when building systems? It is mostly 
 
 #### Static vs Dynamic Typing
 
-Dynamically languages are known to be very useful and expressive, but not as safe as the statically typed languages. When these terms are discussed, people usually confuse this with strong vs weak typing. But dynamically typed languages can very well be strongly typed (e.g. python). In the past, dynamic languages were used more often in web development.
+Dynamically typed languages are known to be very useful and expressive, but not as safe as the statically typed languages. When these terms are discussed, people usually confuse this with strong vs weak typing. But dynamically typed languages can very well be strongly typed (e.g. python). In the past, dynamic languages were used more often in web development.
 
 But modern statically typed languages catch up on the productivity as the compiler technologies evolved dramatically in the last 10 years. Though, they are still not there yet. Rust, Kotlin, C# are good examples of this. They are not as verbose, and can make clever assumptions on typing (e.g. implicits).
 
