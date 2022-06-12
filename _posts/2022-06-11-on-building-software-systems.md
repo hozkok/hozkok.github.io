@@ -34,13 +34,13 @@ Some popular backend frameworks (such as django, rails, phoenix, laravel) have v
     <figcaption><a href="https://en.wikipedia.org/wiki/Directed_acyclic_graph">[image from wikipedia]</a></figcaption>
 </figure>
 
-In the modern world software systems, most of the applications have complex data-driven logic. And when it comes to data, having cyclic relationships is extremely harmful and hard to manage. DAGs are very popular data structures for data pipelines and immutable structures. If two data models depend on each other, there is probably an association that needs to be defined separately. If you have a cyclic relationship, you probably have a bad smell ([taste](#having-a-good-taste)) in the architecture.
+In the modern world software systems, most of the applications have complex data-driven logic. And when it comes to data, having cyclic relationships is extremely harmful and hard to manage. DAGs are very popular data structures for data pipelines and immutable structures in many languages leverage their power. If two data models depend on each other, there is probably an association that needs to be defined separately. If you have a cyclic relationship, you probably have a bad smell ([taste](#having-a-good-taste)) in the architecture.
 
 ### System Architecture
 
-When we build a system [of systems], how we define dependencies play a very important role on the complexity and reliability of the system. **Minimizing the moving parts** is one of the most important things and we should be conservative when it comes to introducing a new system level dependency for the new requirements. A new system level dependency potantially means more metrics, less fault tolerancy, less control over the system.
+When we build a system [of systems], how we define dependencies play a very important role on the complexity and reliability of the system. **Minimizing the moving parts** is one of the most important things and we should be conservative when it comes to introducing a new system level dependency for the new requirements. A new system level dependency potantially means more metrics to watch, less fault tolerancy, less control over the system and added complexity, not even mentioning the security and versioning support.
 
-As with most things, simplicity is important. When it comes to systems architecture, simplicity is even more important. And a software system's simplicity starts with its system architecture. Once the system evolves into a complex system, there is no turning back. Fighting the complexity while evolving for the current needs is usually **infeasible** as discussed in the famous [Clean Code by Robert C. Martin](https://www.goodreads.com/book/show/3735293-clean-code).
+When it comes to systems architecture, simplicity is even more important. And a software system's simplicity starts with its system architecture. Once the system evolves into a complex system, there is no turning back. Fighting the complexity while evolving for the current needs is usually **infeasible** as discussed in the famous [Clean Code by Robert C. Martin](https://www.goodreads.com/book/show/3735293-clean-code). A software system is no different than a living organism, and we usually don't have the luxury to fully stop the world. _Evolution_ is an undeniable component of any software system.
 
 As stated by the famous Gall's Law;
 
@@ -63,7 +63,7 @@ But modern statically typed languages catch up on the productivity as the compil
 
 On the other hand, dynamically typed languages also saw the usefulness and the demand from the communities to include strong typing integrated into the languages. That's why javascript (with typescript) and python added [gradular typing](https://en.wikipedia.org/wiki/Gradual_typing) feature into the languages. Though, they don't benefit from the performance benefits of static type systems in statically typed compiled languages.
 
-It is easy to build systems in dynamic languages. But if I ever hear "easy", I start questioning things for the consequences.
+It is easier to build software in dynamic/unsafe languages. But if I ever hear "easy", I start questioning things for the consequences. There is no easy path to anything in life.
 
 **Easy != Simple**
 
@@ -72,9 +72,11 @@ It is easy to build systems in dynamic languages. But if I ever hear "easy", I s
     <figcaption><a href="https://xkcd.com/353/">[image from xkcd]</a></figcaption>
 </figure>
 
-#### FP vs OOP
+#### Functional (FP) vs Object Oriented Programming (OOP)
 
 Not gonna lie, I am a fan of FP. Even though OOP helps a lot on modelling the real-world application business logic, it also leads to "unsafe" programming as it encourages stateful programming with mutation being the core data manipulation technique. This becomes a big issue when dealing with concurrency related problems. It is inherently hard to deal with concurrency problems, so it is best to avoid them. You can find my [presentation](/immutability-presentation) on immutable data structures related to the subject.
+
+In general, functional programming encourages us to write safer code by staying close to mathematical way of thinking when we reason about the code.
 
 
 ### Having a good taste
@@ -95,16 +97,22 @@ Douglas Crockford once said;
 Linus Torvalds -if we can ignore his ego- has a reference to good taste in programming [in one of his talks][torvalds-good-taste]. Also, Paul Graham discusses the subject in [this article][good-taste].
 
 
-## Software Engineering
+## The Engineering
 
-The field of software engineering is still in early stages. In the late 80s, one of the most influencal people in Computer Science, [Gerald Sussman](https://en.wikipedia.org/wiki/Gerald_Jay_Sussman) foresaw that programming is same as geometry of the ancient greek times. Back then, he stated that we are living in an era where we just discovered it, but we will realize the importance and usefulness of programming in the future to build systems. This was a very bold statement during that time. He almost knew, in 40 years ago, we were going to have a software-defined world.
+The field of software engineering is still in early stages. In the late 80s, one of the most influencal people in Computer Science, [Gerald Sussman](https://en.wikipedia.org/wiki/Gerald_Jay_Sussman) foresaw that programming is similar to geometry of the ancient greek times. Back then, he stated that we are living in an era where we just discovered it, but we will realize the importance and usefulness of programming in the future to build systems. This was a very bold statement during that time. He almost knew, in 40 years ago, we were going to have a software-defined world.
 
 So where is software engineering now, when we are talking about the software systems? Do software engineers apply science? Is it math? Some wizardry? engineering? My answer is;
 
-- There is wizardry on having beautiful abstractions, elegancy in the code, clever ingenious solutions.
-- There is engineering for optimizing the trade offs on both human (engineer time) hardware (where does it run, allocation), software (the entire stack is full of trade offs) resources.
-- There is science when we reason about the system's SLA, handling load, resources capabilities, performance analysis
+- There is wizardry on having beautiful abstractions, elegancy in the code, clever ingenious reusable solutions.
+- There is engineering for optimizing the trade offs on both human (engineer time), hardware (where does it run, lifetime, physics of electronics), software (the entire stack is full of trade offs) resources.
+- There is science when we reason about the system's SLA, handling load, resources capabilities, performance and complexity analysis... At the end of the day, we "believe" in the system we build/depend based on the scientific methodologies we apply.
 - And lastly... there is math in all of the above.
+
+Thinking about engineering of the software systems, we can find many similarities to other engineering fields. There are physical materials, work methodologies, components to define and patterns to apply. There is even facade pattern taking its name from structural engineering. Everything involved there have trade-offs very similar to other engineering fields. Because we are experiencing the early stages, the terms, scope and specializations may not be solidly established.
+
+As with the software systems, the engineering and architectural practices rapidly evolve in a fast paced world.
+
+
 
 
 [good-taste]: http://www.paulgraham.com/goodtaste.html
