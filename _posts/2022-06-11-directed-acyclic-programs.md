@@ -95,7 +95,7 @@ Linus Torvalds -if we can ignore his ego- has a reference to good taste in progr
 
 The field of software engineering is still in early stages. In the late 80s, one of the most influencal people in Computer Science, [Gerald Sussman](https://en.wikipedia.org/wiki/Gerald_Jay_Sussman) foresaw that programming is same as geometry of the ancient greek times. Back then, he stated that we are living in an era where we just discovered it, but we will realize the importance and usefulness of programming in the future to build systems. This was a very bold statement during that time. He almost knew, in 40 years ago, we were going to have a software-defined world.
 
-So where is software engineering now, when we are talking about the software systems? Are software engineers apply science? Is it math? Some wizardry? engineering? My answer is;
+So where is software engineering now, when we are talking about the software systems? Do software engineers apply science? Is it math? Some wizardry? engineering? My answer is;
 
 - There is wizardry on having beautiful abstractions, elegancy in the code, clever ingenious solutions.
 - There is engineering for optimizing the trade offs on both human (engineer time) hardware (where does it run, allocation), software (the entire stack is full of trade offs) resources.
