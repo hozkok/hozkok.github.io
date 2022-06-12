@@ -74,7 +74,7 @@ It is easy to build systems in dynamic languages. But if I ever hear "easy", I s
 
 #### FP vs OOP
 
-Not gonna lie, I am a fan of FP. Even though OOP helps a lot on modelling the real-world application business logic, it also leads to "unsafe" programming as it encourages stateful programming. This becomes a big issue when dealing with concurrency related problems. It is inherently hard to deal with concurrency problems, so it is best to avoid them.
+Not gonna lie, I am a fan of FP. Even though OOP helps a lot on modelling the real-world application business logic, it also leads to "unsafe" programming as it encourages stateful programming with mutation being the core data manipulation technique. This becomes a big issue when dealing with concurrency related problems. It is inherently hard to deal with concurrency problems, so it is best to avoid them. You can find my [presentation](/immutability-presentation) on immutable data structures related to the subject.
 
 
 ### Having a good taste
